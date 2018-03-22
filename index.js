@@ -15,9 +15,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.post('/', function(req,res) {
+    if (req.body.result.metadata.intentName == "getMediaIntent") {
+        console.log(req.body);
+        console.log(req.body.originalRequest.data.message.attachments[0].payload.url);
+        var imgurl = req.body.originalRequest.data.message.attachments[0].payload.url;
+    } else {
+
     var lat = req.body.originalRequest.data.postback.data.lat;
     var long = req.body.originalRequest.data.postback.data.long;
-    //console.log(req.body);
+    
     //console.log(req.body.originalRequest.data.postback.data.lat);
     //console.log(req.body.originalRequest.data.postback.data.long);
     //"https://maps.googleapis.com/maps/api/geocode/json?latlng=23.168770,79.931847&key=AIzaSyAPEp-nSzbgXSRGF1Hj0hzkPKevn3vf4z8"
@@ -90,6 +96,7 @@ app.post('/', function(req,res) {
 // //     speech: req.body.result.resolvedQuery
 // // });
     });
+    }
 });
 
 app.listen(port);

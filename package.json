@@ -20,6 +20,7 @@
     "moment": "^2.20.1",
     "morgan": "^1.9.0",
     "natural": "^0.5.6",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "tesseract.js": "^1.0.10"
   }
 }
