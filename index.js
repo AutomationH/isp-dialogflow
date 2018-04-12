@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var request = require('request');
-const API_AI_TOKEN = 'cc8d6f4bfc774c12a990d10f14656e5b'; // silly-name-maker agent.
+require('dotenv').config()
+const API_AI_TOKEN = process.env.AI_TOKEN; // silly-name-maker agent.
 const apiAiClient = require('apiai')(API_AI_TOKEN);
 
 
@@ -33,7 +34,7 @@ app.post('/', function(req,res) {
                 url: 'https://maps.googleapis.com/maps/api/geocode/json',
                 qs: {
                     latlng: lat + "," + long,
-                    key: 'AIzaSyAPEp-nSzbgXSRGF1Hj0hzkPKevn3vf4z8'
+                    key: process.env.MAP_KEY
                 },
                 json: true
             };
